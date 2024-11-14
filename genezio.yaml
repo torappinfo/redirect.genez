@@ -1,14 +1,13 @@
+backend:
+    functions:
+        - entry: index.mjs
+          handler: handler
+          name: function-node-function
+          path: .
+          type: node-function
+    language:
+        name: js
+    path: .
 name: redirect
-# The region where the project is deployed. Available regions: us-east-1, eu-central-1
 region: us-east-1
 yamlVersion: 2
-backend:
-  path: .
-  language:
-    name: js 
-  functions:
-    - name: redirect
-      path: .
-      handler: handler
-      entry: index.mjs
-      type: aws  # Correctly specify the type as 'aws'
