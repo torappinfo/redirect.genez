@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "",
+  "dependencies": {
+    "node-fetch": ""
+  },
   "license": "ISC"
 }
