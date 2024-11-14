@@ -8,6 +8,10 @@ backend:
     language:
         name: js
     path: .
+    packageManager: npm
+    scripts:
+      preDeploy:
+        - npm install node-fetch
 name: redirect
 region: us-east-1
 yamlVersion: 2
