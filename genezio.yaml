@@ -4,7 +4,7 @@ backend:
           handler: handler
           name: function-node-function
           path: .
-          type: node-function
+          type: aws
     language:
         name: js
     path: .
