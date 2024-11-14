@@ -1,29 +1,14 @@
 name: redirect
 # The region where the project is deployed. Available regions: us-east-1, eu-central-1
 region: us-east-1
-# The version of the Genezio YAML configuration to parse.
 yamlVersion: 2
 backend:
-  # The root directory of the backend.
-  path: ./
-  # Information about the backend's programming language.
+  path: .
   language:
-    # The name of the programming language.
-    name: js
-    # The package manager used by the backend.
-    packageManager: npm
-  scripts:
-    deploy:
-      - npm install
-  # Information about the backend's functions.
+    name: js 
   functions:
-    # The name (label) of the function.
-    - name: hello-world-function
-      # The path to the function's code.
-      path: ./
-      # The name of the function handler
+    - name: redirect
+      path: .
       handler: handler
-      # The entry point for the function.
       entry: index.mjs
-      # The type of handler used by the function.
-      type: aws
+      type: aws  # Correctly specify the type as 'aws'
