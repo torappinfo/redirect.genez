@@ -17,7 +17,24 @@ export const handler = async (event) => {
       const lowerCaseKey = key.toLowerCase();
       responseHeaders[lowerCaseKey] = String(value);
     });
-  let responseBody = await response.blob();
+  const contentType = response.headers.get('content-type');
+  let responseBody;
+  do {
+    if(contentType){
+      if(contentType.includes('text') ||
+         contentType.includes('json') ||
+         contentType.includes('script')){
+      }else if(contentType.includes('image/') ||
+        contentType.includes('audio/') ||
+        contentType.includes('video/') ||
+        contentType.includes('application/')){
+        const arrayBuffer = await response.arrayBuffer();
+        responseBody = Buffer.from(arrayBuffer).toString('base64');
+        break;
+      }
+    }
+    responseBody = await response.text();
+  }while(false);
   return {
     statusCode: response.status,
     headers: responseHeaders,
