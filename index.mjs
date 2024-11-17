@@ -11,15 +11,16 @@ export const handler = async (event) => {
     opts.body = event.body;
   const newReq = new Request(Url, opts);
   const response = await fetch(newReq);
-  console.log(response.headers);
+  //console.log(response.headers);
   const responseHeaders = {};
   response.headers.forEach((key,value) => {
       const lowerCaseKey = key.toLowerCase();
       responseHeaders[lowerCaseKey] = String(value);
     });
+  let responseBody = await response.blob();
   return {
     statusCode: response.status,
     headers: responseHeaders,
-    body: response.blob()
-    };
+    body: responseBody
+  };
 };
