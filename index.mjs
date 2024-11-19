@@ -19,6 +19,7 @@ export const handler = async (event) => {
     });
   const contentType = response.headers.get('content-type');
   let responseBody;
+  let isBase64Encoded = false;
   do {
     if(contentType){
       if(contentType.includes('text') ||
@@ -30,6 +31,7 @@ export const handler = async (event) => {
         contentType.includes('application/')){
         const arrayBuffer = await response.arrayBuffer();
         responseBody = Buffer.from(arrayBuffer).toString('base64');
+        isBase64Encoded = true;
         break;
       }
     }
@@ -38,6 +40,7 @@ export const handler = async (event) => {
   return {
     statusCode: response.status,
     headers: responseHeaders,
-    body: responseBody
+    body: responseBody,
+    isBase64Encoded: isBase64Encoded
   };
 };
