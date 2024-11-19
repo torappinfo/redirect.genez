@@ -15,7 +15,7 @@ export const handler = async (event) => {
   const responseHeaders = {};
   response.headers.forEach((key,value) => {
       const lowerCaseKey = key.toLowerCase();
-      responseHeaders.set(lowerCaseKey,value);
+      responseHeaders[lowerCaseKey] = String(value);
     });
   const contentType = response.headers.get('content-type');
   let responseBody;
