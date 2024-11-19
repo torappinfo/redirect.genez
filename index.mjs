@@ -17,7 +17,7 @@ export const handler = async (event) => {
       const lowerCaseKey = key.toLowerCase();
       responseHeaders[lowerCaseKey] = String(value);
     });
-  const contentType = response.headers.get('content-type');
+  const contentType = responseHeaders['content-type'];
   let responseBody;
   let isBase64Encoded = false;
   do {
