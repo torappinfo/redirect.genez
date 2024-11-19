@@ -15,14 +15,14 @@ export const handler = async (event) => {
   const responseHeaders = {};
   response.headers.forEach((key,value) => {
       const lowerCaseKey = key.toLowerCase();
-      responseHeaders[lowerCaseKey] = String(value);
+      responseHeaders.set(lowerCaseKey,value);
     });
   const contentType = response.headers.get('content-type');
   let responseBody;
   let isBase64Encoded = false;
   do {
     if(contentType){
-      if(contentType.includes('text') ||
+      if(contentType.includes('text/') ||
          contentType.includes('json') ||
          contentType.includes('script')){
       }else if(contentType.includes('image/') ||
